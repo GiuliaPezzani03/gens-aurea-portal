@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fixing — Gens Aurea Group</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #0f0f1a;
+            color: #e8e0d0;
+            min-height: 100vh;
+        }
+
+        /* ---- Header ---- */
+        .header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border-bottom: 2px solid #c9a849;
+            padding: 18px 32px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .header-logo {
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: #c9a849;
+            text-transform: uppercase;
+        }
+        .header-divider { width: 1px; height: 32px; background: #c9a849; opacity: 0.4; }
+        .header-subtitle { font-size: 13px; color: #a09070; letter-spacing: 1px; text-transform: uppercase; }
+        .header-badge {
+            margin-left: auto;
+            background: #1e3a1e;
+            border: 1px solid #3a7a3a;
+            color: #6fdc6f;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+        .header-badge::before { content: '● '; }
+
+        /* ---- Layout ---- */
+        .container {
+            display: grid;
+            grid-template-columns: 480px 1fr;
+            gap: 24px;
+            padding: 28px 32px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        /* ---- Card ---- */
+        .card {
+            background: #1a1a2e;
+            border: 1px solid #2a2a4a;
+            border-radius: 12px;
+            padding: 28px;
+        }
+        .card-title {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #c9a849;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #2a2a4a;
+        }
+
+        /* ---- Form ---- */
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+        .form-group { margin-bottom: 16px; }
+        .form-group.full { grid-column: 1 / -1; }
+        label {
+            display: block;
+            font-size: 11px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #8080a0;
+            margin-bottom: 6px;
+        }
+        input, select {
+            width: 100%;
+            background: #0f0f1a;
+            border: 1px solid #2a2a4a;
+            border-radius: 8px;
+            padding: 10px 14px;
+            color: #e8e0d0;
+            font-size: 14px;
+            transition: border-color 0.2s;
+            outline: none;
+        }
+        input:focus, select:focus { border-color: #c9a849; }
+        select option { background: #1a1a2e; }
+
+        .section-label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #c9a849;
+            opacity: 0.7;
+            margin: 20px 0 14px;
+            padding-top: 16px;
+            border-top: 1px solid #2a2a4a;
+        }
+
+        /* ---- Button ---- */
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #c9a849, #a07030);
+            border: none;
+            border-radius: 8px;
+            color: #0f0f1a;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            cursor: pointer;
+            margin-top: 8px;
+            transition: opacity 0.2s, transform 0.1s;
+        }
+        .btn-submit:hover { opacity: 0.9; }
+        .btn-submit:active { transform: scale(0.99); }
+        .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        /* ---- Alert ---- */
+        .alert {
+            display: none;
+            padding: 14px 16px;
+            border-radius: 8px;
+            font-size: 13px;
+            margin-top: 16px;
+            line-height: 1.5;
+        }
+        .alert.success {
+            background: #1a3a1a;
+            border: 1px solid #3a7a3a;
+            color: #80dc80;
+            display: block;
+        }
+        .alert.error {
+            background: #3a1a1a;
+            border: 1px solid #7a3a3a;
+            color: #dc8080;
+            display: block;
+        }
+
+        /* ---- Tabella clienti ---- */
+        .table-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 4px;
+        }
+        .refresh-info { font-size: 11px; color: #5a5a7a; }
+        .refresh-dot {
+            display: inline-block;
+            width: 6px; height: 6px;
+            background: #c9a849;
+            border-radius: 50%;
+            margin-right: 6px;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .table-wrap { overflow-x: auto; margin-top: 16px; }
+        table { width: 100%; border-collapse: collapse; font-size: 13px; }
+        th {
+            text-align: left;
+            padding: 10px 12px;
+            font-size: 10px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #6060a0;
+            border-bottom: 1px solid #2a2a4a;
+            white-space: nowrap;
+        }
+        td {
+            padding: 12px 12px;
+            border-bottom: 1px solid #1e1e38;
+            vertical-align: middle;
+        }
+        tr:last-child td { border-bottom: none; }
+        tr:hover td { background: #1e1e38; }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .badge-synced {
+            background: #1a3a1a;
+            border: 1px solid #3a7a3a;
+            color: #6fdc6f;
+        }
+        .badge-pending {
+            background: #3a2a0a;
+            border: 1px solid #8a6a1a;
+            color: #c9a849;
+        }
+
+        .sf-id {
+            font-family: monospace;
+            font-size: 11px;
+            color: #4080c0;
+            white-space: nowrap;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 48px 24px;
+            color: #3a3a6a;
+        }
+        .empty-state-icon { font-size: 36px; margin-bottom: 12px; }
+        .empty-state-text { font-size: 13px; }
+
+        /* ---- Architecture banner ---- */
+        .arch-banner {
+            margin: 0 32px 20px;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            border: 1px solid #2a2a4a;
+            border-radius: 10px;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            font-size: 12px;
+            overflow-x: auto;
+        }
+        .arch-node {
+            background: #0f0f1a;
+            border: 1px solid #c9a849;
+            border-radius: 8px;
+            padding: 8px 16px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        .arch-node-title { font-size: 10px; color: #8080a0; letter-spacing: 1px; text-transform: uppercase; }
+        .arch-node-name { font-size: 13px; color: #c9a849; font-weight: 600; margin-top: 2px; }
+        .arch-arrow {
+            padding: 0 10px;
+            color: #c9a849;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+        .arch-arrow-label { font-size: 10px; color: #5a5a7a; text-align: center; display: block; }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <div class="header-logo">Gens Aurea Group</div>
+        <div class="header-divider"></div>
+        <div class="header-subtitle">Sistema Fixing — Gestione Clienti Negozio</div>
+        <div class="header-badge">Sistema attivo</div>
+    </div>
+
+    <!-- Architecture Banner -->
+    <div class="arch-banner">
+        <div class="arch-node">
+            <div class="arch-node-title">Sistema Negozio</div>
+            <div class="arch-node-name">Fixing Portal</div>
+        </div>
+        <div class="arch-arrow">
+            <span>→</span>
+            <span class="arch-arrow-label">salva</span>
+        </div>
+        <div class="arch-node">
+            <div class="arch-node-title">DB Centrale</div>
+            <div class="arch-node-name">H2 / Fixing DB</div>
+        </div>
+        <div class="arch-arrow">
+            <span>→</span>
+            <span class="arch-arrow-label">MuleSoft sync</span>
+        </div>
+        <div class="arch-node">
+            <div class="arch-node-title">Anypoint Platform</div>
+            <div class="arch-node-name">Integration Layer</div>
+        </div>
+        <div class="arch-arrow">
+            <span>→</span>
+            <span class="arch-arrow-label">upsert</span>
+        </div>
+        <div class="arch-node">
+            <div class="arch-node-title">CRM / Data Cloud</div>
+            <div class="arch-node-name">Salesforce 360</div>
+        </div>
+    </div>
+
+    <!-- Main layout -->
+    <div class="container">
+
+        <!-- Form registrazione -->
+        <div class="card">
+            <div class="card-title">Registrazione Cliente</div>
+            <form id="clienteForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Nome *</label>
+                        <input type="text" id="nome" placeholder="Mario"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Cognome *</label>
+                        <input type="text" id="cognome" placeholder="Rossi" required/>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="email" placeholder="mario.rossi@email.com"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Telefono</label>
+                        <input type="text" id="telefono" placeholder="+39 02 1234567"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Codice Fiscale</label>
+                    <input type="text" id="codice_fiscale" placeholder="RSSMRA80A01H501U" style="text-transform:uppercase"/>
+                </div>
+
+                <div class="section-label">Dettagli Transazione</div>
+
+                <div class="form-group">
+                    <label>Negozio *</label>
+                    <select id="negozio" required>
+                        <option value="">— seleziona negozio —</option>
+                        <optgroup label="Gioia Pura">
+                            <option>Gioia Pura — Milano Centro</option>
+                            <option>Gioia Pura — Roma Prati</option>
+                            <option>Gioia Pura — Torino</option>
+                            <option>Gioia Pura — Bologna</option>
+                        </optgroup>
+                        <optgroup label="Compro Oro">
+                            <option>Compro Oro — Bergamo</option>
+                            <option>Compro Oro — Brescia</option>
+                            <option>Compro Oro — Verona</option>
+                            <option>Compro Oro — Padova</option>
+                        </optgroup>
+                        <optgroup label="Altri Brand">
+                            <option>Outlet Gioielli — Milano</option>
+                            <option>Outlet Gioielli — Roma</option>
+                        </optgroup>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Tipo Transazione</label>
+                        <select id="tipo_transazione">
+                            <option>Compro Oro</option>
+                            <option>Vendita Gioiello</option>
+                            <option>Riparazione</option>
+                            <option>Valutazione</option>
+                            <option>Primo Accesso</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Valore Oro (€)</label>
+                        <input type="number" id="valore_oro" placeholder="0.00" min="0" step="0.01"/>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-submit" id="btnSubmit">
+                    Registra Cliente nel Sistema
+                </button>
+                <div class="alert" id="alertBox"></div>
+            </form>
+        </div>
+
+        <!-- Tabella clienti registrati -->
+        <div class="card">
+            <div class="card-title">
+                <div class="table-header">
+                    <span>Clienti Registrati</span>
+                    <span class="refresh-info">
+                        <span class="refresh-dot"></span>Aggiornamento automatico ogni 10s
+                    </span>
+                </div>
+            </div>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Cliente</th>
+                            <th>Negozio</th>
+                            <th>Transazione</th>
+                            <th>Registrato</th>
+                            <th>Salesforce</th>
+                        </tr>
+                    </thead>
+                    <tbody id="clientiTableBody">
+                        <tr>
+                            <td colspan="5">
+                                <div class="empty-state">
+                                    <div class="empty-state-icon">🏪</div>
+                                    <div class="empty-state-text">Nessun cliente ancora registrato</div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API = 'https://gens-aurea-demo-qxvkfj.dw4w1g-2.gbr-e1.cloudhub.io/api/clienti';
+
+        // --- Registrazione cliente ---
+        document.getElementById('clienteForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = document.getElementById('btnSubmit');
+            const alert = document.getElementById('alertBox');
+            btn.disabled = true;
+            btn.textContent = 'Registrazione in corso...';
+            alert.className = 'alert';
+            alert.style.display = 'none';
+
+            const body = {
+                nome:             document.getElementById('nome').value.trim(),
+                cognome:          document.getElementById('cognome').value.trim(),
+                email:            document.getElementById('email').value.trim(),
+                telefono:         document.getElementById('telefono').value.trim(),
+                codice_fiscale:   document.getElementById('codice_fiscale').value.trim().toUpperCase(),
+                negozio:          document.getElementById('negozio').value,
+                tipo_transazione: document.getElementById('tipo_transazione').value,
+                valore_oro:       parseFloat(document.getElementById('valore_oro').value) || 0
+            };
+
+            try {
+                const res = await fetch(API, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(body)
+                });
+                const data = await res.json();
+
+                if (res.ok) {
+                    alert.className = 'alert success';
+                    alert.innerHTML = `✓ <strong>${data.cliente}</strong> registrato con successo!<br>
+                        <small style="opacity:0.8">Negozio: ${data.negozio} · Sincronizzazione Salesforce: ${data.sincronizzazione}</small>`;
+                    alert.style.display = 'block';
+                    document.getElementById('clienteForm').reset();
+                    setTimeout(loadClienti, 3000);
+                } else {
+                    throw new Error(data.message || 'Errore sconosciuto');
+                }
+            } catch (err) {
+                alert.className = 'alert error';
+                alert.innerHTML = `✗ Errore: ${err.message}`;
+                alert.style.display = 'block';
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Registra Cliente nel Sistema';
+            }
+        });
+
+        // --- Carica tabella clienti ---
+        async function loadClienti() {
+            try {
+                const res = await fetch(API);
+                const clienti = await res.json();
+                const tbody = document.getElementById('clientiTableBody');
+
+                if (!clienti.length) {
+                    tbody.innerHTML = `<tr><td colspan="5">
+                        <div class="empty-state">
+                            <div class="empty-state-icon">🏪</div>
+                            <div class="empty-state-text">Nessun cliente ancora registrato</div>
+                        </div></td></tr>`;
+                    return;
+                }
+
+                tbody.innerHTML = clienti.map(c => {
+                    const nome = `${c.nome || ''} ${c.cognome || ''}`.trim();
+                    const email = c.email ? `<br><small style="color:#5a5a9a">${c.email}</small>` : '';
+                    const data = c.data_registrazione
+                        ? new Date(c.data_registrazione).toLocaleString('it-IT', {day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'})
+                        : '—';
+                    const badge = c.sincronizzato
+                        ? `<span class="badge badge-synced">✓ Sincronizzato</span>${c.sf_id ? '<br><span class="sf-id">' + c.sf_id.substring(0,15) + '…</span>' : ''}`
+                        : `<span class="badge badge-pending">⏳ In attesa</span>`;
+                    const valore = c.valore_oro ? `<br><small style="color:#8080a0">€${parseFloat(c.valore_oro).toFixed(2)}</small>` : '';
+
+                    return `<tr>
+                        <td><strong>${nome}</strong>${email}</td>
+                        <td style="font-size:12px">${c.negozio || '—'}</td>
+                        <td style="font-size:12px">${c.tipo_transazione || '—'}${valore}</td>
+                        <td style="font-size:12px;color:#8080a0">${data}</td>
+                        <td>${badge}</td>
+                    </tr>`;
+                }).join('');
+            } catch (e) {
+                // silenzioso, DB potrebbe non essere ancora pronto
+            }
+        }
+
+        // Carica subito e poi ogni 10 secondi
+        loadClienti();
+        setInterval(loadClienti, 10000);
+    </script>
+</body>
+</html>
