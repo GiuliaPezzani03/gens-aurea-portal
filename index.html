@@ -220,6 +220,21 @@
             white-space: nowrap;
         }
 
+        .card-white {
+            background: #ffffff;
+            border: 1px solid #d0dce8;
+            color: #1a2a3a;
+        }
+        .card-white .card-title {
+            color: #3a7bd5;
+            border-bottom-color: #d0dce8;
+        }
+        .card-white th { color: #6080a0; border-bottom-color: #d0dce8; }
+        .card-white td { border-bottom-color: #eef2f7; color: #1a2a3a; }
+        .card-white tr:hover td { background: #f4f8fc; }
+        .card-white .refresh-info { color: #8090a0; }
+        .card-white .refresh-dot { background: #3a7bd5; }
+
         .empty-state {
             text-align: center;
             padding: 48px 24px;
@@ -390,7 +405,7 @@
         </div>
 
         <!-- Tabella studenti registrati -->
-        <div class="card">
+        <div class="card card-white">
             <div class="card-title">
                 <div class="table-header">
                     <span>Studenti Registrati</span>
