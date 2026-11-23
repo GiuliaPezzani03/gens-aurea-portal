@@ -441,7 +441,7 @@
     </div>
 
     <script>
-        const API = 'https://multiversiry-demo.dw4w1g-2.gbr-e1.cloudhub.io/api/studenti';
+        const API = 'https://multiversity-demo-qxvkfj.dw4w1g-2.gbr-e1.cloudhub.io/api/clienti';
 
         // --- Registrazione studente ---
         document.getElementById('studenteForm').addEventListener('submit', async (e) => {
@@ -454,14 +454,14 @@
             alertBox.style.display = 'none';
 
             const body = {
-                nome:             document.getElementById('nome').value.trim(),
-                cognome:          document.getElementById('cognome').value.trim(),
-                email:            document.getElementById('email').value.trim(),
-                telefono:         document.getElementById('telefono').value.trim(),
-                codice_fiscale:   document.getElementById('codice_fiscale').value.trim().toUpperCase(),
-                corso:            document.getElementById('corso').value,
-                tipo_iscrizione:  document.getElementById('tipo_iscrizione').value,
-                anno_accademico:  document.getElementById('anno_accademico').value
+                nome:            document.getElementById('nome').value.trim(),
+                cognome:         document.getElementById('cognome').value.trim(),
+                email:           document.getElementById('email').value.trim(),
+                telefono:        document.getElementById('telefono').value.trim(),
+                codice_fiscale:  document.getElementById('codice_fiscale').value.trim().toUpperCase(),
+                corso:           document.getElementById('corso').value,
+                tipo_iscrizione: document.getElementById('tipo_iscrizione').value,
+                anno_accademico: document.getElementById('anno_accademico').value
             };
 
             try {
@@ -517,11 +517,10 @@
                     const badge = s.sincronizzato
                         ? `<span class="badge badge-synced">✓ Sincronizzato</span>${s.sf_id ? '<br><span class="sf-id">' + s.sf_id.substring(0,15) + '…</span>' : ''}`
                         : `<span class="badge badge-pending">⏳ In attesa</span>`;
-                    const aa = s.anno_accademico ? `<br><small style="color:#6080a0">A.A. ${s.anno_accademico}</small>` : '';
 
                     return `<tr>
                         <td><strong>${nome}</strong>${email}</td>
-                        <td style="font-size:12px">${s.corso || '—'}</td>
+                        <td style="font-size:12px">${s.negozio || s.corso || '—'}</td>
                         <td style="font-size:12px">${s.tipo_iscrizione || '—'}${aa}</td>
                         <td style="font-size:12px;color:#6080a0">${data}</td>
                         <td>${badge}</td>
