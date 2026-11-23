@@ -454,14 +454,14 @@
             alertBox.style.display = 'none';
 
             const body = {
-                nome:            document.getElementById('nome').value.trim(),
-                cognome:         document.getElementById('cognome').value.trim(),
-                email:           document.getElementById('email').value.trim(),
-                telefono:        document.getElementById('telefono').value.trim(),
-                codice_fiscale:  document.getElementById('codice_fiscale').value.trim().toUpperCase(),
-                corso:           document.getElementById('corso').value,
-                tipo_iscrizione: document.getElementById('tipo_iscrizione').value,
-                anno_accademico: document.getElementById('anno_accademico').value
+                nome:             document.getElementById('nome').value.trim(),
+                cognome:          document.getElementById('cognome').value.trim(),
+                email:            document.getElementById('email').value.trim(),
+                telefono:         document.getElementById('telefono').value.trim(),
+                codice_fiscale:   document.getElementById('codice_fiscale').value.trim().toUpperCase(),
+                negozio:          document.getElementById('corso').value,
+                tipo_transazione: document.getElementById('tipo_iscrizione').value + ' — ' + document.getElementById('anno_accademico').value,
+                valore_oro:       0
             };
 
             try {
@@ -474,8 +474,8 @@
 
                 if (res.ok) {
                     alertBox.className = 'alert success';
-                    alertBox.innerHTML = `✓ <strong>${data.studente}</strong> registrato con successo!<br>
-                        <small style="opacity:0.8">Corso: ${data.corso} · Sincronizzazione Salesforce: ${data.sincronizzazione}</small>`;
+                    alertBox.innerHTML = `✓ <strong>${data.cliente}</strong> registrato con successo!<br>
+                        <small style="opacity:0.8">Corso: ${data.negozio} · Sincronizzazione Salesforce: ${data.sincronizzazione}</small>`;
                     alertBox.style.display = 'block';
                     document.getElementById('studenteForm').reset();
                     setTimeout(loadStudenti, 3000);
