@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fixing — Gens Aurea Group</title>
+    <title>Portale Iscrizioni — Multiversiry</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: #0f0f1a;
-            color: #e8e0d0;
+            background: #0a0f1e;
+            color: #e0e8f0;
             min-height: 100vh;
         }
 
         /* ---- Header ---- */
         .header {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            border-bottom: 2px solid #c9a849;
+            background: linear-gradient(135deg, #0f1828 0%, #111e34 100%);
+            border-bottom: 2px solid #3a7bd5;
             padding: 18px 32px;
             display: flex;
             align-items: center;
@@ -27,11 +27,11 @@
             font-size: 22px;
             font-weight: 700;
             letter-spacing: 3px;
-            color: #c9a849;
+            color: #4a90d9;
             text-transform: uppercase;
         }
-        .header-divider { width: 1px; height: 32px; background: #c9a849; opacity: 0.4; }
-        .header-subtitle { font-size: 13px; color: #a09070; letter-spacing: 1px; text-transform: uppercase; }
+        .header-divider { width: 1px; height: 32px; background: #3a7bd5; opacity: 0.4; }
+        .header-subtitle { font-size: 13px; color: #6a90b0; letter-spacing: 1px; text-transform: uppercase; }
         .header-badge {
             margin-left: auto;
             background: #1e3a1e;
@@ -56,8 +56,8 @@
 
         /* ---- Card ---- */
         .card {
-            background: #1a1a2e;
-            border: 1px solid #2a2a4a;
+            background: #101828;
+            border: 1px solid #1e2e44;
             border-radius: 12px;
             padding: 28px;
         }
@@ -66,10 +66,10 @@
             font-weight: 600;
             letter-spacing: 2px;
             text-transform: uppercase;
-            color: #c9a849;
+            color: #4a90d9;
             margin-bottom: 24px;
             padding-bottom: 12px;
-            border-bottom: 1px solid #2a2a4a;
+            border-bottom: 1px solid #1e2e44;
         }
 
         /* ---- Form ---- */
@@ -81,43 +81,43 @@
             font-size: 11px;
             letter-spacing: 1px;
             text-transform: uppercase;
-            color: #8080a0;
+            color: #6080a0;
             margin-bottom: 6px;
         }
         input, select {
             width: 100%;
-            background: #0f0f1a;
-            border: 1px solid #2a2a4a;
+            background: #0a0f1e;
+            border: 1px solid #1e2e44;
             border-radius: 8px;
             padding: 10px 14px;
-            color: #e8e0d0;
+            color: #e0e8f0;
             font-size: 14px;
             transition: border-color 0.2s;
             outline: none;
         }
-        input:focus, select:focus { border-color: #c9a849; }
-        select option { background: #1a1a2e; }
+        input:focus, select:focus { border-color: #4a90d9; }
+        select option { background: #101828; }
 
         .section-label {
             font-size: 11px;
             font-weight: 600;
             letter-spacing: 1.5px;
             text-transform: uppercase;
-            color: #c9a849;
+            color: #4a90d9;
             opacity: 0.7;
             margin: 20px 0 14px;
             padding-top: 16px;
-            border-top: 1px solid #2a2a4a;
+            border-top: 1px solid #1e2e44;
         }
 
         /* ---- Button ---- */
         .btn-submit {
             width: 100%;
             padding: 14px;
-            background: linear-gradient(135deg, #c9a849, #a07030);
+            background: linear-gradient(135deg, #3a7bd5, #2255a0);
             border: none;
             border-radius: 8px;
-            color: #0f0f1a;
+            color: #ffffff;
             font-size: 14px;
             font-weight: 700;
             letter-spacing: 1px;
@@ -151,18 +151,18 @@
             display: block;
         }
 
-        /* ---- Tabella clienti ---- */
+        /* ---- Tabella studenti ---- */
         .table-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
             margin-bottom: 4px;
         }
-        .refresh-info { font-size: 11px; color: #5a5a7a; }
+        .refresh-info { font-size: 11px; color: #3a5a7a; }
         .refresh-dot {
             display: inline-block;
             width: 6px; height: 6px;
-            background: #c9a849;
+            background: #4a90d9;
             border-radius: 50%;
             margin-right: 6px;
             animation: pulse 2s infinite;
@@ -180,17 +180,17 @@
             font-size: 10px;
             letter-spacing: 1.5px;
             text-transform: uppercase;
-            color: #6060a0;
-            border-bottom: 1px solid #2a2a4a;
+            color: #4060a0;
+            border-bottom: 1px solid #1e2e44;
             white-space: nowrap;
         }
         td {
             padding: 12px 12px;
-            border-bottom: 1px solid #1e1e38;
+            border-bottom: 1px solid #141e30;
             vertical-align: middle;
         }
         tr:last-child td { border-bottom: none; }
-        tr:hover td { background: #1e1e38; }
+        tr:hover td { background: #141e30; }
 
         .badge {
             display: inline-flex;
@@ -208,9 +208,9 @@
             color: #6fdc6f;
         }
         .badge-pending {
-            background: #3a2a0a;
-            border: 1px solid #8a6a1a;
-            color: #c9a849;
+            background: #1a2a3a;
+            border: 1px solid #2a5a8a;
+            color: #6aaed9;
         }
 
         .sf-id {
@@ -223,7 +223,7 @@
         .empty-state {
             text-align: center;
             padding: 48px 24px;
-            color: #3a3a6a;
+            color: #2a3a5a;
         }
         .empty-state-icon { font-size: 36px; margin-bottom: 12px; }
         .empty-state-text { font-size: 13px; }
@@ -231,8 +231,8 @@
         /* ---- Architecture banner ---- */
         .arch-banner {
             margin: 0 32px 20px;
-            background: linear-gradient(135deg, #1a1a2e, #16213e);
-            border: 1px solid #2a2a4a;
+            background: linear-gradient(135deg, #0f1828, #111e34);
+            border: 1px solid #1e2e44;
             border-radius: 10px;
             padding: 16px 24px;
             display: flex;
@@ -243,39 +243,39 @@
             overflow-x: auto;
         }
         .arch-node {
-            background: #0f0f1a;
-            border: 1px solid #c9a849;
+            background: #0a0f1e;
+            border: 1px solid #3a7bd5;
             border-radius: 8px;
             padding: 8px 16px;
             text-align: center;
             white-space: nowrap;
         }
-        .arch-node-title { font-size: 10px; color: #8080a0; letter-spacing: 1px; text-transform: uppercase; }
-        .arch-node-name { font-size: 13px; color: #c9a849; font-weight: 600; margin-top: 2px; }
+        .arch-node-title { font-size: 10px; color: #6080a0; letter-spacing: 1px; text-transform: uppercase; }
+        .arch-node-name { font-size: 13px; color: #4a90d9; font-weight: 600; margin-top: 2px; }
         .arch-arrow {
             padding: 0 10px;
-            color: #c9a849;
+            color: #3a7bd5;
             font-size: 18px;
             flex-shrink: 0;
         }
-        .arch-arrow-label { font-size: 10px; color: #5a5a7a; text-align: center; display: block; }
+        .arch-arrow-label { font-size: 10px; color: #3a5a7a; text-align: center; display: block; }
     </style>
 </head>
 <body>
 
     <!-- Header -->
     <div class="header">
-        <div class="header-logo">Gens Aurea Group</div>
+        <div class="header-logo">Multiversiry</div>
         <div class="header-divider"></div>
-        <div class="header-subtitle">Sistema Fixing — Gestione Clienti Negozio</div>
+        <div class="header-subtitle">Portale Iscrizioni — Gestione Studenti</div>
         <div class="header-badge">Sistema attivo</div>
     </div>
 
     <!-- Architecture Banner -->
     <div class="arch-banner">
         <div class="arch-node">
-            <div class="arch-node-title">Sistema Negozio</div>
-            <div class="arch-node-name">Fixing Portal</div>
+            <div class="arch-node-title">Portale Studenti</div>
+            <div class="arch-node-name">Iscrizioni Portal</div>
         </div>
         <div class="arch-arrow">
             <span>→</span>
@@ -283,7 +283,7 @@
         </div>
         <div class="arch-node">
             <div class="arch-node-title">DB Centrale</div>
-            <div class="arch-node-name">H2 / Fixing DB</div>
+            <div class="arch-node-name">H2 / Student DB</div>
         </div>
         <div class="arch-arrow">
             <span>→</span>
@@ -306,10 +306,10 @@
     <!-- Main layout -->
     <div class="container">
 
-        <!-- Form registrazione -->
+        <!-- Form registrazione studente -->
         <div class="card">
-            <div class="card-title">Registrazione Cliente</div>
-            <form id="clienteForm">
+            <div class="card-title">Registrazione Studente</div>
+            <form id="studenteForm">
                 <div class="form-row">
                     <div class="form-group">
                         <label>Nome *</label>
@@ -335,59 +335,65 @@
                     <input type="text" id="codice_fiscale" placeholder="RSSMRA80A01H501U" style="text-transform:uppercase"/>
                 </div>
 
-                <div class="section-label">Dettagli Transazione</div>
+                <div class="section-label">Dettagli Iscrizione</div>
 
                 <div class="form-group">
-                    <label>Negozio *</label>
-                    <select id="negozio" required>
-                        <option value="">— seleziona negozio —</option>
-                        <optgroup label="Gioia Pura">
-                            <option>Gioia Pura — Milano Centro</option>
-                            <option>Gioia Pura — Roma Prati</option>
-                            <option>Gioia Pura — Torino</option>
-                            <option>Gioia Pura — Bologna</option>
+                    <label>Facoltà / Corso di Laurea *</label>
+                    <select id="corso" required>
+                        <option value="">— seleziona corso —</option>
+                        <optgroup label="Area Economica">
+                            <option>Economia Aziendale — Triennale</option>
+                            <option>Management e Innovazione — Magistrale</option>
+                            <option>Amministrazione e Controllo — Magistrale</option>
                         </optgroup>
-                        <optgroup label="Compro Oro">
-                            <option>Compro Oro — Bergamo</option>
-                            <option>Compro Oro — Brescia</option>
-                            <option>Compro Oro — Verona</option>
-                            <option>Compro Oro — Padova</option>
+                        <optgroup label="Area Giuridica">
+                            <option>Giurisprudenza — Ciclo Unico</option>
+                            <option>Diritto del Lavoro — Master I Livello</option>
                         </optgroup>
-                        <optgroup label="Altri Brand">
-                            <option>Outlet Gioielli — Milano</option>
-                            <option>Outlet Gioielli — Roma</option>
+                        <optgroup label="Area Tecnologica">
+                            <option>Ingegneria Informatica — Triennale</option>
+                            <option>Data Science e AI — Magistrale</option>
+                            <option>Cybersecurity — Master II Livello</option>
+                        </optgroup>
+                        <optgroup label="Area Umanistica">
+                            <option>Psicologia — Triennale</option>
+                            <option>Scienze della Comunicazione — Triennale</option>
+                            <option>Marketing Digitale — Master I Livello</option>
                         </optgroup>
                     </select>
                 </div>
                 <div class="form-row">
                     <div class="form-group">
-                        <label>Tipo Transazione</label>
-                        <select id="tipo_transazione">
-                            <option>Compro Oro</option>
-                            <option>Vendita Gioiello</option>
-                            <option>Riparazione</option>
-                            <option>Valutazione</option>
-                            <option>Primo Accesso</option>
+                        <label>Tipo Iscrizione</label>
+                        <select id="tipo_iscrizione">
+                            <option>Nuova Iscrizione</option>
+                            <option>Trasferimento da altro Ateneo</option>
+                            <option>Seconda Laurea</option>
+                            <option>Abbreviazione di Corso</option>
+                            <option>Singoli Esami</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>Valore Oro (€)</label>
-                        <input type="number" id="valore_oro" placeholder="0.00" min="0" step="0.01"/>
+                        <label>Anno Accademico</label>
+                        <select id="anno_accademico">
+                            <option>2025/2026</option>
+                            <option>2026/2027</option>
+                        </select>
                     </div>
                 </div>
 
                 <button type="submit" class="btn-submit" id="btnSubmit">
-                    Registra Cliente nel Sistema
+                    Registra Studente nel Sistema
                 </button>
                 <div class="alert" id="alertBox"></div>
             </form>
         </div>
 
-        <!-- Tabella clienti registrati -->
+        <!-- Tabella studenti registrati -->
         <div class="card">
             <div class="card-title">
                 <div class="table-header">
-                    <span>Clienti Registrati</span>
+                    <span>Studenti Registrati</span>
                     <span class="refresh-info">
                         <span class="refresh-dot"></span>Aggiornamento automatico ogni 10s
                     </span>
@@ -397,19 +403,19 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Cliente</th>
-                            <th>Negozio</th>
-                            <th>Transazione</th>
+                            <th>Studente</th>
+                            <th>Corso</th>
+                            <th>Iscrizione</th>
                             <th>Registrato</th>
                             <th>Salesforce</th>
                         </tr>
                     </thead>
-                    <tbody id="clientiTableBody">
+                    <tbody id="studentiTableBody">
                         <tr>
                             <td colspan="5">
                                 <div class="empty-state">
-                                    <div class="empty-state-icon">🏪</div>
-                                    <div class="empty-state-text">Nessun cliente ancora registrato</div>
+                                    <div class="empty-state-icon">🎓</div>
+                                    <div class="empty-state-text">Nessuno studente ancora registrato</div>
                                 </div>
                             </td>
                         </tr>
@@ -420,17 +426,17 @@
     </div>
 
     <script>
-        const API = 'https://gens-aurea-demo-qxvkfj.dw4w1g-2.gbr-e1.cloudhub.io/api/clienti';
+        const API = 'https://multiversiry-demo.dw4w1g-2.gbr-e1.cloudhub.io/api/studenti';
 
-        // --- Registrazione cliente ---
-        document.getElementById('clienteForm').addEventListener('submit', async (e) => {
+        // --- Registrazione studente ---
+        document.getElementById('studenteForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             const btn = document.getElementById('btnSubmit');
-            const alert = document.getElementById('alertBox');
+            const alertBox = document.getElementById('alertBox');
             btn.disabled = true;
             btn.textContent = 'Registrazione in corso...';
-            alert.className = 'alert';
-            alert.style.display = 'none';
+            alertBox.className = 'alert';
+            alertBox.style.display = 'none';
 
             const body = {
                 nome:             document.getElementById('nome').value.trim(),
@@ -438,9 +444,9 @@
                 email:            document.getElementById('email').value.trim(),
                 telefono:         document.getElementById('telefono').value.trim(),
                 codice_fiscale:   document.getElementById('codice_fiscale').value.trim().toUpperCase(),
-                negozio:          document.getElementById('negozio').value,
-                tipo_transazione: document.getElementById('tipo_transazione').value,
-                valore_oro:       parseFloat(document.getElementById('valore_oro').value) || 0
+                corso:            document.getElementById('corso').value,
+                tipo_iscrizione:  document.getElementById('tipo_iscrizione').value,
+                anno_accademico:  document.getElementById('anno_accademico').value
             };
 
             try {
@@ -452,57 +458,57 @@
                 const data = await res.json();
 
                 if (res.ok) {
-                    alert.className = 'alert success';
-                    alert.innerHTML = `✓ <strong>${data.cliente}</strong> registrato con successo!<br>
-                        <small style="opacity:0.8">Negozio: ${data.negozio} · Sincronizzazione Salesforce: ${data.sincronizzazione}</small>`;
-                    alert.style.display = 'block';
-                    document.getElementById('clienteForm').reset();
-                    setTimeout(loadClienti, 3000);
+                    alertBox.className = 'alert success';
+                    alertBox.innerHTML = `✓ <strong>${data.studente}</strong> registrato con successo!<br>
+                        <small style="opacity:0.8">Corso: ${data.corso} · Sincronizzazione Salesforce: ${data.sincronizzazione}</small>`;
+                    alertBox.style.display = 'block';
+                    document.getElementById('studenteForm').reset();
+                    setTimeout(loadStudenti, 3000);
                 } else {
                     throw new Error(data.message || 'Errore sconosciuto');
                 }
             } catch (err) {
-                alert.className = 'alert error';
-                alert.innerHTML = `✗ Errore: ${err.message}`;
-                alert.style.display = 'block';
+                alertBox.className = 'alert error';
+                alertBox.innerHTML = `✗ Errore: ${err.message}`;
+                alertBox.style.display = 'block';
             } finally {
                 btn.disabled = false;
-                btn.textContent = 'Registra Cliente nel Sistema';
+                btn.textContent = 'Registra Studente nel Sistema';
             }
         });
 
-        // --- Carica tabella clienti ---
-        async function loadClienti() {
+        // --- Carica tabella studenti ---
+        async function loadStudenti() {
             try {
                 const res = await fetch(API);
-                const clienti = await res.json();
-                const tbody = document.getElementById('clientiTableBody');
+                const studenti = await res.json();
+                const tbody = document.getElementById('studentiTableBody');
 
-                if (!clienti.length) {
+                if (!studenti.length) {
                     tbody.innerHTML = `<tr><td colspan="5">
                         <div class="empty-state">
-                            <div class="empty-state-icon">🏪</div>
-                            <div class="empty-state-text">Nessun cliente ancora registrato</div>
+                            <div class="empty-state-icon">🎓</div>
+                            <div class="empty-state-text">Nessuno studente ancora registrato</div>
                         </div></td></tr>`;
                     return;
                 }
 
-                tbody.innerHTML = clienti.map(c => {
-                    const nome = `${c.nome || ''} ${c.cognome || ''}`.trim();
-                    const email = c.email ? `<br><small style="color:#5a5a9a">${c.email}</small>` : '';
-                    const data = c.data_registrazione
-                        ? new Date(c.data_registrazione).toLocaleString('it-IT', {day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'})
+                tbody.innerHTML = studenti.map(s => {
+                    const nome = `${s.nome || ''} ${s.cognome || ''}`.trim();
+                    const email = s.email ? `<br><small style="color:#3a6a9a">${s.email}</small>` : '';
+                    const data = s.data_registrazione
+                        ? new Date(s.data_registrazione).toLocaleString('it-IT', {day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'})
                         : '—';
-                    const badge = c.sincronizzato
-                        ? `<span class="badge badge-synced">✓ Sincronizzato</span>${c.sf_id ? '<br><span class="sf-id">' + c.sf_id.substring(0,15) + '…</span>' : ''}`
+                    const badge = s.sincronizzato
+                        ? `<span class="badge badge-synced">✓ Sincronizzato</span>${s.sf_id ? '<br><span class="sf-id">' + s.sf_id.substring(0,15) + '…</span>' : ''}`
                         : `<span class="badge badge-pending">⏳ In attesa</span>`;
-                    const valore = c.valore_oro ? `<br><small style="color:#8080a0">€${parseFloat(c.valore_oro).toFixed(2)}</small>` : '';
+                    const aa = s.anno_accademico ? `<br><small style="color:#6080a0">A.A. ${s.anno_accademico}</small>` : '';
 
                     return `<tr>
                         <td><strong>${nome}</strong>${email}</td>
-                        <td style="font-size:12px">${c.negozio || '—'}</td>
-                        <td style="font-size:12px">${c.tipo_transazione || '—'}${valore}</td>
-                        <td style="font-size:12px;color:#8080a0">${data}</td>
+                        <td style="font-size:12px">${s.corso || '—'}</td>
+                        <td style="font-size:12px">${s.tipo_iscrizione || '—'}${aa}</td>
+                        <td style="font-size:12px;color:#6080a0">${data}</td>
                         <td>${badge}</td>
                     </tr>`;
                 }).join('');
@@ -512,8 +518,8 @@
         }
 
         // Carica subito e poi ogni 10 secondi
-        loadClienti();
-        setInterval(loadClienti, 10000);
+        loadStudenti();
+        setInterval(loadStudenti, 10000);
     </script>
 </body>
 </html>
